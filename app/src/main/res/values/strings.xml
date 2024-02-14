@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ToDoList</string>
+    <string name="aj_note">Ajouter une note</string>
+</resources>
