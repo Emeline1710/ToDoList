@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CreateNote">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="20sp"
@@ -28,12 +28,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/titre"
+            android:autofillHints="@string/titre"
             android:layout_marginTop="20dp"
             android:maxWidth="200dp"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateTextView"  />
+            app:layout_constraintTop_toBottomOf="@+id/dateTextView" />
 
         <EditText
             android:id="@+id/noteEditText"
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="@string/aj_note"
+            android:autofillHints="@string/aj_note"
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

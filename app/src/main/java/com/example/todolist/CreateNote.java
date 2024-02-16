@@ -12,17 +12,12 @@ import java.util.Date;
 import java.util.Locale;
 
 public class CreateNote extends AppCompatActivity {
-
-    private TextView dateTextView;
-    private EditText noteEditText;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
-        dateTextView = findViewById(R.id.dateTextView);
-        noteEditText = findViewById(R.id.noteEditText);
+        TextView dateTextView = findViewById(R.id.dateTextView);
 
         SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String currentDate = date.format(new Date());
