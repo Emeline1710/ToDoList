@@ -6,9 +6,7 @@
     <string name="save">Sauvegarder</string>
     <string name="delete">Supprimer</string>
     <string name="date">Date :</string>
-    <string name="titre">Titre...</string>
-    <string name="ajNote">Ajouter une note...</string>
+    <string name="titre">Titre&#8230;</string>
+    <string name="ajNote">Ajouter une note&#8230;</string>
     <string name="view_notes">Voir toutes les notes</string>
-
-
 </resources>
