@@ -8,6 +8,7 @@
     <string name="date">Date :</string>
     <string name="titre">Titre...</string>
     <string name="ajNote">Ajouter une note...</string>
+    <string name="view_notes">Voir toutes les notes</string>
 
 
 </resources>

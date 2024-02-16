@@ -15,12 +15,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Ajout du bouton et du listener
+        //Ajout des boutons et de leur listener
         Button buttonCreateNote = findViewById(R.id.buttonCreateNote);
         buttonCreateNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CreateNote.class);
+                startActivity(intent);
+            }
+        });
+
+        Button buttonViewNotes = findViewById(R.id.buttonViewNotes);
+        buttonViewNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ViewNotes.class);
                 startActivity(intent);
             }
         });
