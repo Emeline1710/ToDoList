@@ -17,12 +17,16 @@ public class CreateNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
+        //Affiche la date du jour en haut de la note
+
         TextView dateTextView = findViewById(R.id.dateTextView);
 
         SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String currentDate = date.format(new Date());
         dateTextView.setText(String.format("Date: %s", currentDate));
     }
+
+    //Affiche le menu
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

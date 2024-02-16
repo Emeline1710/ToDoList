@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Ajout des boutons et de leur listener
+
         Button buttonCreateNote = findViewById(R.id.buttonCreateNote);
         buttonCreateNote.setOnClickListener(new View.OnClickListener() {
             @Override
