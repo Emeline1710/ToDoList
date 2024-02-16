@@ -26,7 +26,7 @@ public class CreateNote extends AppCompatActivity {
 
         SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String currentDate = date.format(new Date());
-        dateTextView.setText("Date: " + currentDate);
+        dateTextView.setText(String.format("Date: %s", currentDate));
     }
 
     @Override
