@@ -7,10 +7,15 @@
     tools:context=".CreateNote">
 
     <LinearLayout
+        android:id="@+id/linearLayoutCreateNote"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:padding="20sp"
-        android:orientation="vertical">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/dateTextView"
@@ -27,11 +32,11 @@
             android:id="@+id/titre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/titre"
-            android:autofillHints="@string/titre"
             android:layout_marginTop="20dp"
-            android:maxWidth="200sp"
+            android:autofillHints="@string/titre"
+            android:hint="@string/titre"
             android:inputType="text"
+            android:maxWidth="200sp"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="@string/ajNote"
             android:autofillHints="@string/ajNote"
+            android:hint="@string/ajNote"
             android:inputType="textMultiLine"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

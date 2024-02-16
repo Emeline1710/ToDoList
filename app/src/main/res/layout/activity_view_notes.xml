@@ -6,4 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".ViewNotes">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- TOUTES LES NOTES -->
+        <!--
+        On peut :
+               - Cliquer sur une note :
+                       Redirige vers la page de la note ou on peut la modifier
+                       Supprimer la note
+               - Mettre dans des dossiers ?
+        -->
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
