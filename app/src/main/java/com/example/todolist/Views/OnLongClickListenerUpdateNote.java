@@ -3,6 +3,7 @@ package com.example.todolist.Views;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -38,11 +39,23 @@ public class OnLongClickListenerUpdateNote implements View.OnLongClickListener{
                             editNote(Integer.parseInt(id),view);
                         }
                         else if (item == 1) {
-                            Note note = new Note();
-                            note.setId(Integer.parseInt(id));
-                            new NoteHandler(context).deleteNote(note);
-                            Toast.makeText(context, "Note supprimée avec succès", Toast.LENGTH_SHORT).show();
-                            readNotes(context,view);
+                            new AlertDialog.Builder(context)
+                                    .setMessage("Voulez-vous vraiment supprimer la note ?")
+                                    .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Note note = new Note();
+                                            note.setId(Integer.parseInt(id));
+                                            new NoteHandler(context).deleteNote(note);
+                                            Toast.makeText(context, "Note supprimée avec succès", Toast.LENGTH_SHORT).show();
+                                            readNotes(context,view);
+                                        }
+                                    })
+                                    .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {}
+                                    })
+                                    .show();
                         }
 
                         dialog.dismiss();
@@ -53,7 +66,7 @@ public class OnLongClickListenerUpdateNote implements View.OnLongClickListener{
 
     public void editNote(final int id, final View view) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View formElementsView = inflater.inflate(R.layout.note_input_form, null, false);
+        final View formElementsView = inflater.inflate(R.layout.note_edit_form, null, false);
         final EditText editTextNoteTitle = formElementsView.findViewById(R.id.editTextNoteTitle);
         final EditText editTextNoteText = formElementsView.findViewById(R.id.editTextNoteText);
 

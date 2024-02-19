@@ -1,7 +1,9 @@
 package com.example.todolist.Views;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -74,6 +76,24 @@ public class CreateNote extends AppCompatActivity {
 
             Intent intent1 = new Intent(this, ViewNotes.class);
             this.startActivity(intent1);
+            return true;
+        }
+
+        if (id == R.id.create_note) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Voulez-vous quitter sans sauvegarder la note ?")
+                    .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(CreateNote.this, CreateNote.class);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {}
+                    })
+                    .show();
             return true;
         }
 
