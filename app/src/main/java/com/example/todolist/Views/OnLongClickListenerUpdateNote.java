@@ -35,7 +35,14 @@ public class OnLongClickListenerUpdateNote implements View.OnLongClickListener{
                     @Override
                     public void onClick(DialogInterface dialog, int item) {
                         if (item == 0) {
-                            editRecord(Integer.parseInt(id),view);
+                            editNote(Integer.parseInt(id),view);
+                        }
+                        else if (item == 1) {
+                            Note note = new Note();
+                            note.setId(Integer.parseInt(id));
+                            new NoteHandler(context).deleteNote(note);
+                            Toast.makeText(context, "Note supprimée avec succès", Toast.LENGTH_SHORT).show();
+                            readNotes(context,view);
                         }
 
                         dialog.dismiss();
@@ -44,7 +51,7 @@ public class OnLongClickListenerUpdateNote implements View.OnLongClickListener{
         return false;
     }
 
-    public void editRecord(final int id, final View view) {
+    public void editNote(final int id, final View view) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View formElementsView = inflater.inflate(R.layout.note_input_form, null, false);
         final EditText editTextNoteTitle = formElementsView.findViewById(R.id.editTextNoteTitle);
