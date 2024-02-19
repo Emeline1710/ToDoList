@@ -69,17 +69,17 @@ public class NoteHandler extends SQLiteHelper{
         db.close();
     }
 
-    public int updateStudent(Note note){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+    public int updateNote(Note note) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(dbHelper.KEY_TITLE, note.getTitle());
-        values.put(dbHelper.KEY_TEXT, note.getText());
-        values.put(dbHelper.KEY_DATE, note.getDate());
-        long updateId=db.update(dbHelper.TABLE,values,
-                dbHelper.KEY_ID + " = ?",
+        values.put(KEY_TITLE, note.getTitle());
+        values.put(KEY_TEXT, note.getText());
+        values.put(KEY_DATE, note.getDate());
+        int updateId = db.update(TABLE, values,
+                KEY_ID + " = ?",
                 new String[]{String.valueOf(note.getId())});
         db.close();
-        return (int) updateId;
+        return updateId;
     }
 
     public int count() {
