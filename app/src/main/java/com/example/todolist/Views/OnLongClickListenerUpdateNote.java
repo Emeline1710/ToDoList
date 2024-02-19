@@ -16,7 +16,11 @@ import com.example.todolist.Managers.NoteHandler;
 import com.example.todolist.Models.Note;
 import com.example.todolist.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class OnLongClickListenerUpdateNote implements View.OnLongClickListener{
     private Context context;
@@ -58,6 +62,11 @@ public class OnLongClickListenerUpdateNote implements View.OnLongClickListener{
                     public void onClick(DialogInterface dialog, int id) {
                         note.setTitle(editTextNoteTitle.getText().toString());
                         note.setText(editTextNoteText.getText().toString());
+
+                        SimpleDateFormat dateNow = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+                        dateNow.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
+                        String currentDate = dateNow.format(new Date());
+                        note.setDate(currentDate);
 
                         int updatedRows = noteHandler.updateNote(note);
                         if (updatedRows > 0) {
