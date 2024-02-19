@@ -1,4 +1,4 @@
-package com.example.todolist;
+package com.example.todolist.Models;
 
 import java.time.LocalDate;
 
@@ -6,7 +6,7 @@ public class Note {
     private int id;
     private String title;
     private String text;
-    private LocalDate date;
+    private String date;
 
     public Note(){}
 
@@ -39,11 +39,11 @@ public class Note {
         this.text = text;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
