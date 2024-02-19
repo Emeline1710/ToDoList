@@ -126,7 +126,7 @@ public class OnLongClickListenerUpdateNote implements View.OnLongClickListener{
         else {
             TextView locationItem = new TextView(context);
             locationItem.setPadding(8, 8, 8, 8);
-            locationItem.setText("Aucun enregistrement pour le moment.");
+            locationItem.setText("Aucune note pour le moment.");
             linearLayoutRecords.addView(locationItem);
         }
     }
