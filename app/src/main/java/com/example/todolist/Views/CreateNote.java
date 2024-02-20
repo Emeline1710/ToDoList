@@ -97,6 +97,24 @@ public class CreateNote extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.view_notes) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Voulez-vous quitter sans sauvegarder la note ?")
+                    .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(CreateNote.this, ViewNotes.class);
+                            startActivity(intent);
+                        }
+                    })
+                    .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {}
+                    })
+                    .show();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }
