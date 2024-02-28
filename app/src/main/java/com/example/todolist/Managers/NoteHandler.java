@@ -82,6 +82,61 @@ public class NoteHandler extends SQLiteHelper{
         return updateId;
     }
 
+    public List<Note> getNotesSortedByDate() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        List<Note> noteList = new ArrayList<Note>();
+        String selectQuery = "SELECT * FROM " + dbHelper.TABLE + " ORDER BY " + dbHelper.KEY_DATE + " DESC";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Note note = new Note();
+                note.setId(Integer.parseInt(cursor.getString(0)));
+                note.setTitle(cursor.getString(1));
+                note.setText(cursor.getString(2));
+                note.setDate(cursor.getString(3));
+                noteList.add(note);
+            } while (cursor.moveToNext());
+        }
+        return noteList;
+    }
+
+    public List<Note> getNotesSortedByTitle() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        List<Note> noteList = new ArrayList<Note>();
+        String selectQuery = "SELECT * FROM " + dbHelper.TABLE + " ORDER BY " + dbHelper.KEY_TITLE + " ASC";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Note note = new Note();
+                note.setId(Integer.parseInt(cursor.getString(0)));
+                note.setTitle(cursor.getString(1));
+                note.setText(cursor.getString(2));
+                note.setDate(cursor.getString(3));
+                noteList.add(note);
+            } while (cursor.moveToNext());
+        }
+        return noteList;
+    }
+
+    public List<Note> getNotesSortedById() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        List<Note> noteList = new ArrayList<Note>();
+        String selectQuery = "SELECT * FROM " + dbHelper.TABLE + " ORDER BY " + dbHelper.KEY_ID + " ASC";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Note note = new Note();
+                note.setId(Integer.parseInt(cursor.getString(0)));
+                note.setTitle(cursor.getString(1));
+                note.setText(cursor.getString(2));
+                note.setDate(cursor.getString(3));
+                noteList.add(note);
+            } while (cursor.moveToNext());
+        }
+        return noteList;
+    }
+
+
     public int count() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String sql = "SELECT * FROM " + dbHelper.TABLE;

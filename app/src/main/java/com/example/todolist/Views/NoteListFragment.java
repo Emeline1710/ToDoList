@@ -53,5 +53,32 @@ public class NoteListFragment extends Fragment {
             linearLayoutRecords.addView(locationItem);
         }
     }
-}
 
+    public void updateNotesList(List<Note> updatedNotes) {
+        LinearLayout linearLayoutRecords = getView().findViewById(R.id.linearLayoutNotes);
+        linearLayoutRecords.removeAllViews();
+
+        if (updatedNotes.size() > 0) {
+            for (Note obj : updatedNotes) {
+                int id = obj.getId();
+                String title = obj.getTitle();
+                String text = obj.getText();
+                String date = obj.getDate();
+                String textViewContents = String.valueOf(id)
+                        + "-" + title + " - "
+                        + text + " - " + date;
+                TextView textViewNoteItem = new TextView(getActivity());
+                textViewNoteItem.setPadding(0, 10, 0, 10);
+                textViewNoteItem.setText(textViewContents);
+                textViewNoteItem.setTag(Integer.toString(id));
+                textViewNoteItem.setOnLongClickListener(new OnLongClickListenerUpdateNote());
+                linearLayoutRecords.addView(textViewNoteItem);
+            }
+        } else {
+            TextView locationItem = new TextView(getActivity());
+            locationItem.setPadding(8, 8, 8, 8);
+            locationItem.setText("Aucune note pour le moment.");
+            linearLayoutRecords.addView(locationItem);
+        }
+    }
+}

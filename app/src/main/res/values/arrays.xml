@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="sort_options">
+        <item>Trier par ID</item>
+        <item>Trier par Date</item>
+        <item>Trier par Titre</item>
+    </string-array>
+</resources>
