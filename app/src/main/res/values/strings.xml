@@ -9,4 +9,6 @@
     <string name="titre">Titre&#8230;</string>
     <string name="ajNote">Ajouter une note&#8230;</string>
     <string name="view_notes">Voir toutes les notes</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
