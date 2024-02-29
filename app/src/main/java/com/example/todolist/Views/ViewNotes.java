@@ -14,6 +14,7 @@ import com.example.todolist.Managers.NoteHandler;
 import com.example.todolist.R;
 import java.util.List;
 
+// Cette classe est l'activité d'affichage des notes.
 public class ViewNotes extends AppCompatActivity {
 
     private NoteHandler noteHandler;
@@ -26,8 +27,8 @@ public class ViewNotes extends AppCompatActivity {
 
         noteHandler = new NoteHandler(this);
 
+        // Initialise le spinner de tri
         spinnerSort = findViewById(R.id.spinnerSort);
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.sort_options, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -53,8 +54,8 @@ public class ViewNotes extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
+        // Initialise le bouton d'ajout de note
         ImageView imageViewAddNote = findViewById(R.id.imageViewAddNote);
-
         imageViewAddNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,11 +64,13 @@ public class ViewNotes extends AppCompatActivity {
             }
         });
 
+        // Remplace le fragment container avec le fragment de la liste des notes
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new NoteListFragment())
                 .commit();
     }
 
+    // Met à jour la liste des notes dans le fragment
     private void updateNoteList(List<Note> sortedNotes) {
         NoteListFragment fragment = (NoteListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (fragment != null) {

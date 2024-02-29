@@ -16,6 +16,7 @@ import com.example.todolist.R;
 
 import java.util.List;
 
+// Ce fragment affiche la liste de notes.
 public class NoteListFragment extends Fragment {
 
     @Nullable
@@ -26,6 +27,7 @@ public class NoteListFragment extends Fragment {
         return view;
     }
 
+    // Affiche les notes dans la vue.
     private void displayNotes(View view) {
         LinearLayout linearLayoutRecords = view.findViewById(R.id.linearLayoutNotes);
         linearLayoutRecords.removeAllViews();
@@ -54,6 +56,7 @@ public class NoteListFragment extends Fragment {
         }
     }
 
+    // Met à jour la liste des notes avec les nouvelles notes fournies.
     public void updateNotesList(List<Note> updatedNotes) {
         LinearLayout linearLayoutRecords = getView().findViewById(R.id.linearLayoutNotes);
         linearLayoutRecords.removeAllViews();

@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.todolist.R;
 
+// Cette classe est l'activité principale de l'application.
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -16,12 +17,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Recherche des boutons et ajout de leur listener
-
+        // Recherche des boutons et ajout de leur écouteur d'événements
         Button buttonCreateNote = findViewById(R.id.buttonCreateNote);
         buttonCreateNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Redirige vers l'activité de création de notes
                 Intent intent = new Intent(MainActivity.this, CreateNote.class);
                 startActivity(intent);
             }
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         buttonViewNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Redirige vers l'activité d'affichage des notes
                 Intent intent = new Intent(MainActivity.this, ViewNotes.class);
                 startActivity(intent);
             }

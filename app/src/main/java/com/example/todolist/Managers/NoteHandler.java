@@ -10,14 +10,18 @@ import com.example.todolist.Models.Note;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NoteHandler extends SQLiteHelper{
+
+// Cette classe sert à gérer les notes dans la base de données SQLite.
+
+public class NoteHandler extends SQLiteHelper {
     private SQLiteHelper dbHelper;
 
-    public NoteHandler(Context context){
+    public NoteHandler(Context context) {
         super(context);
         dbHelper = new SQLiteHelper(context);
     }
 
+    // Cette méthode ajoute une note à la base de données.
     public int addNote(Note note) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -26,14 +30,15 @@ public class NoteHandler extends SQLiteHelper{
         values.put(dbHelper.KEY_DATE, note.getDate());
         long insertId = db.insert(dbHelper.TABLE, null, values);
         db.close();
-        return (int)insertId;
+        return (int) insertId;
     }
 
+    // Cette méthode récupère une note à partir de son ID.
     public Note getNote(int id) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query(dbHelper.TABLE, new String[] { dbHelper.KEY_ID,
-                        dbHelper.KEY_TITLE, dbHelper.KEY_TEXT, dbHelper.KEY_DATE }, dbHelper.KEY_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
+        Cursor cursor = db.query(dbHelper.TABLE, new String[]{dbHelper.KEY_ID,
+                        dbHelper.KEY_TITLE, dbHelper.KEY_TEXT, dbHelper.KEY_DATE}, dbHelper.KEY_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
         Note note = new Note();
@@ -44,6 +49,7 @@ public class NoteHandler extends SQLiteHelper{
         return note;
     }
 
+    // Cette méthode récupère toutes les notes de la base de données.
     public List<Note> getAllNotes() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         List<Note> noteList = new ArrayList<Note>();
@@ -62,13 +68,15 @@ public class NoteHandler extends SQLiteHelper{
         return noteList;
     }
 
+    // Cette méthode supprime une note de la base de données.
     public void deleteNote(Note note) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         db.delete(dbHelper.TABLE, dbHelper.KEY_ID + " = ?",
-                new String[] { String.valueOf(note.getId()) });
+                new String[]{String.valueOf(note.getId())});
         db.close();
     }
 
+    // Cette méthode met à jour une note dans la base de données.
     public int updateNote(Note note) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -82,6 +90,7 @@ public class NoteHandler extends SQLiteHelper{
         return updateId;
     }
 
+    // Cette méthode récupère toutes les notes triées par date (la plus récente en premier).
     public List<Note> getNotesSortedByDate() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         List<Note> noteList = new ArrayList<Note>();
@@ -100,6 +109,7 @@ public class NoteHandler extends SQLiteHelper{
         return noteList;
     }
 
+    // Cette méthode récupère toutes les notes triées par titre (ordre alphabetique).
     public List<Note> getNotesSortedByTitle() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         List<Note> noteList = new ArrayList<Note>();
@@ -118,6 +128,7 @@ public class NoteHandler extends SQLiteHelper{
         return noteList;
     }
 
+    // Cette méthode récupère toutes les notes triées par ID.
     public List<Note> getNotesSortedById() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         List<Note> noteList = new ArrayList<Note>();
@@ -136,7 +147,7 @@ public class NoteHandler extends SQLiteHelper{
         return noteList;
     }
 
-
+    // Cette méthode compte le nombre de notes dans la base de données.
     public int count() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String sql = "SELECT * FROM " + dbHelper.TABLE;

@@ -1,19 +1,22 @@
 package com.example.todolist.Models;
 
-import java.time.LocalDate;
-
+// Cette classe représente la table note de la base de données
 public class Note {
     private int id;
     private String title;
     private String text;
     private String date;
 
+    // Constructeur par défaut
     public Note(){}
 
+    // Constructeur avec titre et texte de la note
     public Note(String title, String text){
         this.title = title;
         this.text = text;
     }
+
+    // Getters et setters
 
     public int getId() {
         return id;
@@ -47,6 +50,7 @@ public class Note {
         this.date = date;
     }
 
+    // Méthode toString pour voir tous les attributs de l'objet Note
     @Override
     public String toString() {
         return "Note{" +

@@ -21,6 +21,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+// Cette classe est faite pour créer des notes.
 public class CreateNote extends AppCompatActivity {
     private TextView dateTextView;
     private EditText noteEditText;
@@ -31,8 +32,7 @@ public class CreateNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
-        //Affiche la date du jour en haut de la note
-
+        // Affiche la date du jour en haut de la note
         dateTextView = findViewById(R.id.dateTextView);
         noteEditText = findViewById(R.id.noteEditText);
         titre = findViewById(R.id.titre);
@@ -43,8 +43,7 @@ public class CreateNote extends AppCompatActivity {
         dateTextView.setText(currentDate);
     }
 
-    //Affiche le menu
-
+    // Affiche le menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -66,6 +65,7 @@ public class CreateNote extends AppCompatActivity {
         NoteHandler noteHandler = new NoteHandler(this);
 
         if (id == R.id.save) {
+            // Ajoute la note à la base de données
             int insertedId = noteHandler.addNote(note);
 
             if (insertedId != -1) {
@@ -74,37 +74,26 @@ public class CreateNote extends AppCompatActivity {
                 Toast.makeText(this, "Erreur lors de la sauvegarde de la note", Toast.LENGTH_LONG).show();
             }
 
+            // Redirige vers l'activité ViewNotes
             Intent intent1 = new Intent(this, ViewNotes.class);
             this.startActivity(intent1);
             return true;
         }
 
-        if (id == R.id.create_note) {
+        if (id == R.id.create_note || id == R.id.view_notes) {
+            // Demande confirmation avant de quitter l'activité sans sauvegarder la note
             new AlertDialog.Builder(this)
                     .setMessage("Voulez-vous quitter sans sauvegarder la note ?")
                     .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(CreateNote.this, CreateNote.class);
-                            startActivity(intent);
-                        }
-                    })
-                    .setNegativeButton("Non", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {}
-                    })
-                    .show();
-            return true;
-        }
-
-        if (id == R.id.view_notes) {
-            new AlertDialog.Builder(this)
-                    .setMessage("Voulez-vous quitter sans sauvegarder la note ?")
-                    .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(CreateNote.this, ViewNotes.class);
-                            startActivity(intent);
+                            if (id == R.id.create_note) {
+                                Intent intent = new Intent(CreateNote.this, CreateNote.class);
+                                startActivity(intent);
+                            } else if (id == R.id.view_notes) {
+                                Intent intent = new Intent(CreateNote.this, ViewNotes.class);
+                                startActivity(intent);
+                            }
                         }
                     })
                     .setNegativeButton("Non", new DialogInterface.OnClickListener() {
