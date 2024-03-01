@@ -32,11 +32,11 @@ public class CreateNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
-        // Affiche la date du jour en haut de la note
         dateTextView = findViewById(R.id.dateTextView);
         noteEditText = findViewById(R.id.noteEditText);
         titre = findViewById(R.id.titre);
 
+        // Affiche la date du jour en haut de la note
         SimpleDateFormat dateNow = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
         dateNow.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
         String currentDate = dateNow.format(new Date());
